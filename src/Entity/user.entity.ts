@@ -1,15 +1,15 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity('todos')
-export class TodoEntity {
+@Entity('users')
+export class UserEntity {
   @PrimaryGeneratedColumn()
   id: number;
   @Column()
-  title: string;
+  username: string;
   @Column()
-  description: string;
+  password: string;
   @Column()
-  status: TodoStatus;
+  salt: string;
 }
 
 export enum TodoStatus {

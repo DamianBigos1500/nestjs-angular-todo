@@ -1,5 +1,17 @@
+import { CreateTodoDto } from 'src/DTO/create-todo.dto';
 import { TodoService } from './todo.service';
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+  ValidationPipe,
+} from '@nestjs/common';
+import { TodoStatus } from 'src/Entity/todo.entity';
+import { TodoStatusValidationPipe } from 'src/pipes/TodoStatusValidation.pipe';
 
 @Controller('todos')
 export class TodoController {
@@ -8,14 +20,24 @@ export class TodoController {
   //http GET verb
   @Get()
   getAllTodos() {
-    // console.log(this.todoService.getAllTodos());
-    return this.todoService.getAllTodos();
+    return this.todoService.getAll();
   }
 
   @Post()
-  createNewTodos(@Body() data) {
-    const { title, description } = data;
-    // console.log(this.todoService.getAllTodos());
-    return this.todoService.createTodo(title, description);
+  createNewTodo(@Body(ValidationPipe) data: CreateTodoDto) {
+    return this.todoService.create(data);
+  }
+
+  @Patch(':id')
+  updateTodo(
+    @Body('status', TodoStatusValidationPipe) status: TodoStatus,
+    @Param('id') id: number,
+  ) {
+    return this.todoService.update(id, status);
+  }
+
+  @Delete(':id')
+  deleteTodo(@Param('id') id: number) {
+    return this.todoService.delete(id);
   }
 }

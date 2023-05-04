@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { TodoModule } from './todo/todo.module';
+import { AuthModule } from './auth/auth.module';
 
 const ormOptions: TypeOrmModuleOptions = {
   type: 'mysql',
@@ -17,7 +18,7 @@ const ormOptions: TypeOrmModuleOptions = {
 };
 
 @Module({
-  imports: [TypeOrmModule.forRoot(ormOptions), TodoModule],
+  imports: [TypeOrmModule.forRoot(ormOptions), TodoModule, AuthModule],
   controllers: [AppController],
   providers: [AppService],
 })
