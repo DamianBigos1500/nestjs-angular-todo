@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { UserEntity } from './user.entity';
 
 @Entity('todos')
 export class TodoEntity {
@@ -10,6 +17,12 @@ export class TodoEntity {
   description: string;
   @Column()
   status: TodoStatus;
+
+  @ManyToOne(() => UserEntity, (user) => user.todos)
+  user: UserEntity;
+
+  @Column()
+  userId: number;
 }
 
 export enum TodoStatus {

@@ -16,6 +16,12 @@ const ormOptions: TypeOrmModuleOptions = {
   entities: [],
   synchronize: true,
 };
+// const ormOptions: TypeOrmModuleOptions = {
+//   type: 'sqlite',
+//   database: 'DB.sqlite',
+//   entities: [__dirname + '/**/*.entity{.ts}'],
+//   synchronize: true,
+// };
 
 @Module({
   imports: [TypeOrmModule.forRoot(ormOptions), TodoModule, AuthModule],
