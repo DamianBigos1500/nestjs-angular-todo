@@ -1,35 +1,23 @@
-* {
-  box-sizing: border-box;
+@import 'ngx-toastr/toastr';
+
+.header {
+  padding: 2rem;
 }
 
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+.header ul {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
 }
 
-body {
-  margin: 0;
-  text-align: center;
+.header a {
+  color: #e5e5e5;
+  font-size: 1.15rem;
+  text-decoration: none;
 }
 
-ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  text-align: center;
-}
-
-#error-content {
-  text-align: center;
+.header a:hover,
+.header a:active,
+.header a.active {
+  color: #fcb66b;
 }

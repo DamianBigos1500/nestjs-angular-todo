@@ -1,1 +1,26 @@
-<app-home></app-home>
+<body>
+  <header class="header">
+    <nav>
+      <ul>
+        <li>
+          <a routerLink="/" class=""> Home </a>
+        </li>
+        <li *ngIf="showMenu">
+          <a routerLink="/login" class=""> Login </a>
+        </li>
+        <li *ngIf="showMenu">
+          <a routerLink="/register" class=""> Register </a>
+        </li>
+        <li *ngIf="!showMenu">
+          <span class="" (click)="logout()">
+            Logout ({{ username | titlecase }})
+          </span>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</body>

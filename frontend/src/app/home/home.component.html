@@ -1,1 +1,63 @@
-<p>home works!</p>
+<div class="container">
+  <div class="actions">
+    <!-- New todo -->
+    <div class="">
+      <span mat-raised-button class="button" (click)="openDialog()">
+        Create new todo
+      </span>
+    </div>
+    <!-- Filter todo -->
+    <div class="center">
+      <mat-form-field class="center">
+        <mat-label class="center">Select a status</mat-label>
+        <mat-select (selectionChange)="filterChanged($event)">
+          <mat-option>All</mat-option>
+          <mat-option value="DONE">Completed</mat-option>
+          <mat-option value="IN_PROGRESS">In Progress</mat-option>
+          <mat-option value="OPEN">Open</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <!-- List of todos -->
+  <div class="row">
+    <div class="">
+      <h1>Our Blog Posts</h1>
+      <div class="todos">
+        <ng-container *ngFor="let t of filteredTodos; let i = index">
+          <mat-card class="card">
+            <mat-card-title class="p-2 text-dark">{{ t.title }}</mat-card-title>
+            <mat-card-content class="todo_content" >
+              <div class="todo_content__left">
+                <p class="lead">{{ t.description }}</p>
+              </div>
+              <div class="todo_content__right">
+                <div>
+                  <mat-form-field>
+                    <mat-label>Select a status</mat-label>
+                    <mat-select
+                      [(value)]="t.status"
+                      (selectionChange)="statusChanged($event, t.id, i)"
+                    >
+                      <mat-option value="OPEN">Open</mat-option>
+                      <mat-option value="IN_PROGRESS">In Progress</mat-option>
+                      <mat-option value="COMPLETED">Completed</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <span class="spacer"></span>
+                <mat-icon
+                  color="warn"
+                  style="cursor: pointer"
+                  (click)="delete(t.id)"
+                  >delete</mat-icon
+                >
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
