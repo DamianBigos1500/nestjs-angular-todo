@@ -4,30 +4,48 @@
       <div class="row justify-content-center">
         <div class="col-md-8">
           <div class="card">
-            <div class="card-header" style="font-size: 2rem; font-family: Calibri, sans-serif;">Register</div>
+            <div
+              class="card-header"
+              style="font-size: 2rem; font-family: Calibri, sans-serif"
+            >
+              Register
+            </div>
             <div class="card-body">
-              <form #registerForm="ngForm" (ngSubmit)="registerUser(registerForm)">
-                <div class="form-group row">
-                  <label for="email_address" class="col-md-4 col-form-label text-md-right">Username</label>
+              <form
+                class="form"
+                #registerForm="ngForm"
+                (ngSubmit)="registerUser(registerForm)"
+              >
+                <fieldset >
+                  <label for="email_address">Username</label>
                   <div class="col-md-6">
-                    <input type="text" id="email_address" class="form-control" name="username" required autofocus ngModel>
+                    <input
+                      type="text"
+                      id="email_address"
+                      name="username"
+                      required
+                      autofocus
+                      ngModel
+                    />
                   </div>
-                </div>
+                </fieldset>
 
-                <div class="form-group row">
-                  <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                <fieldset>
+                  <label for="password">Password</label>
                   <div class="col-md-6">
-                    <input type="password" id="password" class="form-control" name="password" required ngModel>
+                    <input
+                      type="password"
+                      id="password"
+                      name="password"
+                      required
+                      ngModel
+                    />
                   </div>
-                </div>
+                </fieldset>
 
-                <div class="col-md-6 offset-md-4 d-flex flex-column">
-                  <button type="submit"
-                          [disabled]="registerForm.invalid"
-                          class="btn btn-primary d-block flex-grow-1 mb-3">
-                    Sign Up
-                  </button>
-                </div>
+                <button type="submit" [disabled]="registerForm.invalid">
+                  Sign Up
+                </button>
               </form>
             </div>
           </div>
